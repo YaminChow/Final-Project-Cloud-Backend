@@ -3,18 +3,16 @@ version: 0.2
 phases:
   install:
     commands:
-      - npm install
+      - npm install # Install dependencies
   build:
     commands:
-      - npm run build # Optional: If you have a build step for the backend
+      - echo "Skipping build step since it's not needed."
   post_build:
     commands:
-      - zip -r ../backend.zip * # Create a zip file with the project files
+      - echo "Creating a zip file of the project..."
+      - zip -r my-nodejs-app.zip * # Zip the entire project including node_modules
+      - echo "Zip file created successfully."
 
 artifacts:
   files:
-    - backend.zip # Upload the zip file for deployment
-
-cache:
-  paths:
-    - node_modules/**/*
+    - my-nodejs-app.zip # Include the zip file as a build artifact

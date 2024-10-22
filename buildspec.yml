@@ -1,0 +1,20 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - npm install
+  build:
+    commands:
+      - npm run build # Optional: If you have a build step for the backend
+  post_build:
+    commands:
+      - zip -r ../backend.zip * # Create a zip file with the project files
+
+artifacts:
+  files:
+    - backend.zip # Upload the zip file for deployment
+
+cache:
+  paths:
+    - node_modules/**/*
